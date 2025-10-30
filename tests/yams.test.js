@@ -9,3 +9,8 @@ test("Carré : 4 dés identiques => 35 points", () => {
   const resultat = analyserLancer([6, 6, 6, 6, 2]);
   expect(resultat).toEqual(["Carré", 35]);
 });
+
+test("Full : 3 dés + 2 dés identiques => 30 points", () => {
+  const resultat = analyserLancer([2, 2, 3, 3, 3]);
+  expect(resultat).toEqual(["Full", 30]);
+});
