@@ -11,8 +11,7 @@ function analyserLancer(des) {
 
   // Je récupère uniquement le nombre d’occurrences (ex: [2,3])
   const occ = Object.values(counts);
-
-  // Je teste chaque figure du Yams dans l’ordre
+  
   if (occ.includes(5)) {
     return ["Yams", 50];
   }
