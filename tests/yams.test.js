@@ -20,4 +20,17 @@ test("Yams : 5 dés identiques => 50 points", () => {
   expect(resultat).toEqual(["Yams", 50]);
 });
 
+test("Grande suite : 1-2-3-4-5 ou 2-3-4-5-6 => 40 points", () => {
+  const resultat1 = analyserLancer([1, 2, 3, 4, 5]);
+  expect(resultat1).toEqual(["Grande suite", 40]);
+
+  const resultat2 = analyserLancer([2, 3, 4, 5, 6]);
+  expect(resultat2).toEqual(["Grande suite", 40]);
+});
+
+test("Chance : dés non identiques => somme des dés", () => {
+  const resultat = analyserLancer([1, 2, 3, 4, 6]);
+  expect(resultat).toEqual(["Chance", 16]);
+});
+
 
