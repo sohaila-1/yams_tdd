@@ -4,7 +4,13 @@ function analyserLancer(des) {
     counts[d] = (counts[d] || 0) + 1;
   }
 
-  if (Object.values(counts).includes(3)) {
+  const occurences = Object.values(counts);
+
+  if (occurences.includes(5)) {
+    return ["Yams", 50];
+  } else if (occurences.includes(4)) {
+    return ["Carré", 35];
+  } else if (occurences.includes(3)) {
     return ["Brelan", 28];
   }
 
