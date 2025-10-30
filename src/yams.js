@@ -1,23 +1,42 @@
 function analyserLancer(des) {
+  // Compter combien de fois chaque valeur apparaît
   const counts = {};
   for (let d of des) {
-    counts[d] = (counts[d] || 0) + 1;
+    if (counts[d]) {
+      counts[d]++;
+    } else {
+      counts[d] = 1;
+    }
   }
 
-  const occurences = Object.values(counts);
+  const occ = Object.values(counts);
 
-  if (occurences.includes(5)) {
+  if (occ.includes(5)) {
     return ["Yams", 50];
-  } else if (occurences.includes(4)) {
+  }
+  if (occ.includes(4)) {
     return ["Carré", 35];
-  } else if (occurences.includes(3) && occurences.includes(2)) {
+  }
+  if (occ.includes(3) && occ.includes(2)) {
     return ["Full", 30];
-  } else if (occurences.includes(3)) {
+  }
+
+  // Vérifier la grande suite
+  const sorted = [...new Set(des)].sort();
+  if (
+    (sorted[0] === 1 && sorted.join("") === "12345") ||
+    (sorted[0] === 2 && sorted.join("") === "23456")
+  ) {
+    return ["Grande suite", 40];
+  }
+
+  if (occ.includes(3)) {
     return ["Brelan", 28];
   }
 
-  // "Chance" : somme des dés
-  return ["Chance", des.reduce((a, b) => a + b, 0)];
+  // Sinon, c’est la "Chance"
+  const somme = des.reduce((a, b) => a + b, 0);
+  return ["Chance", somme];
 }
 
 module.exports = { analyserLancer };
